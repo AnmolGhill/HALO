@@ -1,0 +1,882 @@
+/* === Root Variables and Base Resets === */
+:root {
+    --primary: #2C5282;
+    --secondary: #3182CE;
+    --accent: #4299E1;
+    --text: #2D3748;
+    --background: #F7FAFC;
+    --light: #EBF8FF;
+    --border: #E2E8F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Global Animations === */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+body {
+    background-color: var(--background);
+    background-image: 
+        linear-gradient(135deg, #F7FAFC 0%, #EBF8FF 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===============================
+        Main Container 
+================================== */
+
+/* === Main Layout (Sidebar + Content) === */
+.main-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* === Sidebar Services Navigation === */
+.sidebar {
+    position: sticky;
+    top: 6rem;
+    height: calc(100vh - 8rem);
+    overflow-y: auto;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    border-right: 3px solid var(--primary);
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: var(--light);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
+.sidebar-services {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.content {
+    padding: 1rem;
+}
+
+/* === Hero and Account Section === */
+.hero-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ===========================================
+ Service Buttons (Chatboat,Doctor,Medicine,Eq)
+============================================== */
+
+/* === Service Buttons Styling === */
+.service-btn {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--text);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+}
+
+/* === WhatsApp Service Button Specific Styling === */
+.service-btn.whatsapp-btn {
+    border-color: #25D366;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+}
+
+.service-btn.whatsapp-btn .icon {
+    color: #25D366 !important;
+}
+
+.service-btn.whatsapp-btn:hover {
+    background: #25D366;
+    border-color: #25D366;
+    transform: translateX(5px);
+}
+
+.service-btn.whatsapp-btn:hover .icon {
+    color: white !important;
+    transform: scale(1.1);
+}
+
+.service-btn:hover {
+    transform: translateX(5px);
+    background: var(--secondary);
+    color: white;
+    border-color: var(--secondary);
+}
+
+.service-btn .icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.service-btn:hover .icon {
+    color: white;
+    transform: scale(1.1);
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.service-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* === Health Info Overview Section === */
+.health-info {
+    grid-column: 1 / -1;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ===============================
+       Your Health Overview
+================================== */
+
+.health-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.health-stat {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.health-stat:hover {
+    transform: translateY(-5px);
+}
+
+.services-section {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: slideIn 0.8s ease-out;
+}
+
+/* ===============================
+       Service Descriptions
+================================== */
+
+.service-descriptions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.service-description {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease;
+}
+
+.service-description:hover {
+    transform: translateY(-5px);
+}
+
+.service-description h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.service-description p {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ===============================
+            Nav Bar
+================================== */
+
+.nav-bar {
+    background: white;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: fadeInUp 0.5s ease-out;
+    min-height: 60px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-brand h1 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.2;
+}
+
+/* === WhatsApp Logo Styling === */
+.whatsapp-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #25D366;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.whatsapp-logo:hover {
+    background: #20b858;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-logo svg {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* === Profile Logo Styling === */
+.profile-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    margin-right: 1rem;
+}
+
+.profile-logo:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.profile-logo svg {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* === Language Selector Styling === */
+.language-selector {
+    position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.language-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.language-btn:hover {
+    background: var(--light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(44, 82, 130, 0.2);
+}
+
+.language-text {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.chevron {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid var(--primary);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border);
+}
+
+.language-option:last-child {
+    border-bottom: none;
+}
+
+.language-option:hover {
+    background: var(--light);
+    color: var(--primary);
+}
+
+.language-option.selected {
+    background: var(--primary);
+    color: white;
+}
+
+.language-option.selected:hover {
+    background: var(--secondary);
+}
+
+.flag {
+    font-size: 1.2rem;
+}
+
+.language-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+    min-width: 90px;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(44, 82, 130, 0.2);
+}
+
+/* === Responsive Breakpoints === */
+@media (max-width: 1024px) {
+    .main-container {
+        grid-template-columns: 240px 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+        top: 0;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .content {
+        padding: 0;
+    }
+}
+
+h1, h2 {
+    color: var(--primary);
+    margin-bottom: 2rem;
+    position: relative;
+    font-weight: 600;
+}
+
+/* === Health Dashboard & Stats === */
+.health-dashboard {
+    display: grid;
+    gap: 2rem;
+}
+
+.whb-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.health-stat-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.health-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.health-stat-card.primary {
+    background: var(--primary);
+    color: white;
+}
+
+.health-stat-card.primary h4,
+.health-stat-card.primary .stat-value {
+    color: white;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.health-stat-card.primary .stat-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0.5rem 0;
+}
+
+.stat-trend {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat-trend.positive {
+    color: #48BB78;
+}
+
+.stat-trend.neutral {
+    color: #718096;
+}
+
+.stat-info {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* === Medical History Timeline === */
+.recent-medical-history-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.medical-history-timeline {
+    margin-top: 1.5rem;
+    position: relative;
+}
+
+.medical-history-event {
+    padding-left: 0;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.event-details {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.event-date {
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* === Health Metrics Chart === */
+.health-metrics {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.metric-card {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.metric-value {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.metric-indicator {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.indicator-bar {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: width 1s ease-out;
+}
+
+.metric-status {
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Mobile Navigation */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-toggle {
+    display: none;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon {
+    display: block;
+}
+
+.profile-icon-in-toggle {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Show profile icon in toggle button only on desktop */
+@media (min-width: 769px) {
+    .menu-toggle .profile-icon-in-toggle {
+        display: flex;
+    }
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 16px;
+        position: relative;
+    }
+
+    .sidebar {
+        border-right: none;
+    }
+
+    .whatsapp-logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .whatsapp-logo svg {
+        font-size: 1.2rem;
+    }
+
+    .profile-logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .profile-logo svg {
+        font-size: 1.2rem;
+    }
+
+    .language-selector {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .language-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .language-text {
+        display: none;
+    }
+
+    .language-dropdown {
+        right: -20px;
+        left: -20px;
+        min-width: 150px;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        width: 36px;
+        height: 36px;
+        font-size: 1.4rem;
+        border: 1.5px solid var(--primary);
+        border-radius: 6px;
+        background-color: white;
+        color: var(--primary);
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        margin-left: 6px;
+        position: relative;
+    }
+    
+    /* Hide profile icon in toggle button on mobile */
+    .menu-toggle .profile-icon-in-toggle {
+        display: none !important;
+    }
+
+    .menu-toggle:hover {
+        background-color: #f0f4ff;
+        transform: scale(1.05);
+    }
+
+    .nav-buttons {
+        display: none;
+        position: absolute;
+        top: 72px;
+        right: 0;
+        background: white;
+        padding: 10px 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 1000;
+        border-radius: 0 0 0 10px;
+        width: max-content;
+    }
+
+    .nav-buttons.active {
+        display: flex;
+    }
+
+    .nav-buttons button,
+    .nav-buttons a {
+        width: 100%;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 15px;
+        text-align: left;
+        background: var(--primary);
+        color: white;
+        border: none;
+        margin-bottom: 6px;
+    }
+}

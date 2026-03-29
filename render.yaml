@@ -1,0 +1,26 @@
+services:
+  # Backend API Service
+  - type: web
+    name: HALO-ai-api
+    env: python
+    buildCommand: pip install -r ./server/requirements.txt
+    startCommand: cd server && python main.py
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: PORT
+        value: 8000
+  
+  # Frontend Web Service
+  - type: web
+    name: HALO-ai-frontend
+    env: node
+    buildCommand: cd client && npm ci && npm run build
+    startCommand: cd client && npm run preview
+    plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: VITE_API_BASE_URL
+        value: https://HALO-ai-api.onrender.com

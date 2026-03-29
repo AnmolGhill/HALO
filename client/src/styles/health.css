@@ -1,0 +1,447 @@
+.health-form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    background: var(--primary);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.form-header h1 {
+    color: white;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.form-header p {
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+.form-progress {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-step.active {
+    color: white;
+}
+
+.progress-step:not(:last-child)::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 1rem;
+}
+
+.progress-step.completed:not(:last-child)::after {
+    background: white;
+}
+
+.form-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-section {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.form-section:hover {
+    transform: translateY(-2px);
+}
+
+.form-section h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.025em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    min-height: 48px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--border);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: #e2e8f0;
+}
+
+.input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    opacity: 0.7;
+    font-size: 1.1rem;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.input-icon input {
+    padding-left: 3rem;
+    width: 100%;
+    height: 48px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+}
+
+.input-icon input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+    background: white;
+    outline: none;
+}
+
+.input-icon input:focus + svg,
+.input-icon svg:has(+ input:focus) {
+    color: var(--primary);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .health-form-container {
+        margin: 1rem;
+        max-width: none;
+        border-radius: 12px;
+        min-height: 500px;
+    }
+
+    .form-content {
+        padding: 1.5rem;
+    }
+
+    .form-header {
+        padding: 1.5rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .input-icon input {
+        height: 52px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .input-icon svg {
+        left: 18px;
+        font-size: 1.2rem;
+    }
+
+    .input-icon input {
+        padding-left: 3.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .health-form-container {
+        margin: 0.5rem;
+        border-radius: 8px;
+    }
+
+    .form-content {
+        padding: 1rem;
+    }
+
+    .form-header {
+        padding: 1rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Google Sign-in Styles */
+.google-signin-section {
+    margin: 2rem 0 1rem 0;
+}
+
+.divider-section {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: #6b7280;
+}
+
+.divider-line {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 0;
+}
+
+.divider-text {
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #9ca3af;
+    background: white;
+}
+
+.google-signin-btn {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+    color: #374151;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.google-signin-btn:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.google-signin-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.google-signin-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.google-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.google-logo svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+}
+
+.google-signin-btn:hover:not(:disabled) .google-logo svg {
+    transform: scale(1.05);
+}
+
+.google-text {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+}
+
+/* Enhanced form section for login/register */
+.form-section {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 1.5rem;
+    transition: none;
+}
+
+.form-section:hover {
+    transform: none;
+}
+
+/* Error message styling */
+.error-message {
+    color: #dc2626;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #fee2e2;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    border: 1px solid #fecaca;
+}
+
+/* Success message styling */
+.success-message {
+    color: #059669;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #d1fae5;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    border: 1px solid #a7f3d0;
+}
+
+/* Link styling */
+.auth-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.auth-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.auth-link a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* Register page specific adjustments */
+.health-form-container:has(.form-grid) {
+    max-width: 600px;
+}
+
+.form-grid .form-group {
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .health-form-container:has(.form-grid) {
+        max-width: none;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .form-grid .form-group {
+        margin-bottom: 1rem;
+    }
+}
