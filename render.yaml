@@ -3,7 +3,9 @@ services:
   - type: web
     name: HALO-ai-api
     env: python
-    buildCommand: pip install -r ./server/requirements.txt
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r ./server/requirements.txt
     startCommand: cd server && python main.py
     plan: free
     envVars:
