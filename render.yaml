@@ -5,6 +5,7 @@ services:
     env: python
     buildCommand: |
       pip install --upgrade pip
+      pip install --force-reinstall protobuf==4.25.1
       pip install -r ./server/requirements.txt
     startCommand: cd server && python main.py
     plan: free
